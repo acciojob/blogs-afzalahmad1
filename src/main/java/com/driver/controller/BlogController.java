@@ -17,18 +17,14 @@ public class BlogController {
 
     @Autowired
     BlogService blogService;
-    @Autowired
-    User user;
-    @Autowired
-    private BlogRepository blogRepository;
 
-    @GetMapping
+    @GetMapping("getAllBlogs")
     public ResponseEntity<Integer> getAllBlogs() {
-        int countOfBlogs = user.getBlogList().size();
-        return new ResponseEntity<>(countOfBlogs, HttpStatus.OK);
-    }
+        List<Blog> blogs = blogService.showBlogs();
 
-    @PostMapping
+        return new ResponseEntity<>(blogs.size(), HttpStatus.OK);
+    }
+    @PostMapping("/createBlog")
     public ResponseEntity createBlog(@RequestParam Integer userId ,
                                            @RequestParam String title,
                                            @RequestParam String content) {
@@ -42,7 +38,7 @@ public class BlogController {
             return new ResponseEntity<>("Added image successfully", HttpStatus.OK);
     }
 
-    @DeleteMapping("/{blogId}")
+    @DeleteMapping("deleteBlog/{blogId}")
     public ResponseEntity<Void> deleteBlog(@PathVariable int blogId) {
         blogService.deleteBlog(blogId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

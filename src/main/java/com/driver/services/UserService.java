@@ -13,9 +13,6 @@ public class UserService {
     @Autowired
     UserRepository userRepository3;
 
-    @Autowired
-    BlogService blogService3;
-
     public void createUser(User user){
         userRepository3.save(user);
     }
@@ -26,15 +23,10 @@ public class UserService {
     }
 
     public void updateUser(User user){
-        User newUser = userRepository3.findById(user.getId()).get();
-        newUser.setUserName(user.getUserName());
-        newUser.setLastName(user.getLastName());
-        newUser.setFirstName(user.getFirstName());
-        newUser.setPassword(user.getPassword());
-        userRepository3.save(newUser);
+        userRepository3.save(user);
     }
 
     public User findUserByUsername(String username){
-        return userRepository3.findByUsername(username);
+        return userRepository3.findByUserName(username);
     }
 }
