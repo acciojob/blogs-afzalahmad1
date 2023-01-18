@@ -1,5 +1,6 @@
 package com.driver.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class User{
     private String lastName;
 
 
+   // @JsonIgnore
     @OneToMany(mappedBy = "user" ,cascade = CascadeType.ALL)
     private List<Blog> blogList;
 
