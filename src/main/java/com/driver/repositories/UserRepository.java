@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-    User findByUserName(String userName);
+    User findByUsername(String Username);
 
     User findById(int userId);
 }

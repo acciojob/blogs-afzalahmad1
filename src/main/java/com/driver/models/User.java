@@ -1,6 +1,5 @@
 package com.driver.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +19,7 @@ public class User{
     private int id;
 
 
-    private String userName;
+    private String Username;
     private String password;
     private String firstName;
     private String lastName;
